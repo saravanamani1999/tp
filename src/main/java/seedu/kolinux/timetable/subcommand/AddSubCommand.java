@@ -24,7 +24,7 @@ import static seedu.kolinux.timetable.lesson.Lesson.days;
 /** Represents the operations and checks when adding to the timetable. */
 public class AddSubCommand extends SubCommand {
 
-    private final int NUMBER_SLOTS_FOR_1_HOUR = 2;
+    private static final int NUMBER_SLOTS_FOR_1_HOUR = 2;
 
     public AddSubCommand() {
 
