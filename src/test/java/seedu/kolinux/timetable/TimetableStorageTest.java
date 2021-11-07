@@ -25,6 +25,7 @@ public class TimetableStorageTest {
     private static final ModuleDb moduleDb = new ModuleDb();
 
     private static final String[] VALID_STORAGE = new String[]{"CS1010","LEC","friday","1200","1300"};
+    private static final String VALID_FILE_CONTENT = "CS1010/LEC/friday/1200/1300";
 
     @BeforeAll
     public static void initModuleDb() {
@@ -59,6 +60,15 @@ public class TimetableStorageTest {
         } catch (KolinuxException exception) {
             assertEquals(CORRUPT_STORAGE, exception.getMessage());
         }
+    }
+
+    @Test
+    public void getFileContent_addValidLesson_correctFileContent() throws KolinuxException {
+        moduleList.addModuleByCode("CS1010", moduleDb);
+        Lesson lesson = new Lecture(VALID_STORAGE);
+        lessonStorage.add(lesson);
+        String fileContent = lesson.getFileContent();
+        assertEquals(fileContent,VALID_FILE_CONTENT);
     }
 
 }

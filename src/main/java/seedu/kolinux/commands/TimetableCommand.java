@@ -4,8 +4,6 @@ import seedu.kolinux.exceptions.ExceedWorkloadException;
 import seedu.kolinux.exceptions.KolinuxException;
 import seedu.kolinux.timetable.Timetable;
 import seedu.kolinux.timetable.TimetablePromptHandler;
-import seedu.kolinux.util.PromptHandler;
-
 
 import java.util.logging.Level;
 
@@ -52,9 +50,9 @@ public class TimetableCommand extends Command {
             new TimetablePromptHandler(exception.getMessage(), timetable).handleExceedWorkload(parsedArguments);
         }
         logger.log(Level.INFO, "User added a module to timetable");
-        return new CommandResult(parsedArguments[0].toUpperCase() + " "
-                +
-                parsedArguments[1].toUpperCase() + " has been added to timetable");
+        String moduleCode = parsedArguments[0].toUpperCase();
+        String lessonType = parsedArguments[1].toUpperCase();
+        return new CommandResult(moduleCode + " " + lessonType + " has been added to timetable");
     }
 
     /**
@@ -65,16 +63,13 @@ public class TimetableCommand extends Command {
      */
     private CommandResult deleteLesson() throws KolinuxException {
         timetable.executeDelete(parsedArguments);
-        logger.log(Level.INFO, "User has deleted" + parsedArguments[0].toUpperCase()
-                +
-                " from the timetable.");
-        return new CommandResult(parsedArguments[0].toUpperCase()
-                +
-                " " + parsedArguments[1].toUpperCase() + " " + parsedArguments[3] + " "
-                +
-                parsedArguments[2].toLowerCase()
-                +
-                " has been deleted from timetable");
+        String moduleCode = parsedArguments[0].toUpperCase();
+        String lessonType = parsedArguments[1].toUpperCase();
+        String day = parsedArguments[2].toLowerCase();
+        String startTime = parsedArguments[3];
+        logger.log(Level.INFO, "User has deleted" + moduleCode + " from the timetable.");
+        return new CommandResult(moduleCode + " " + lessonType + " " + startTime
+                + " " + day + " has been deleted from timetable");
     }
 
     /**
@@ -107,10 +102,10 @@ public class TimetableCommand extends Command {
      */
     private CommandResult updateLesson() throws KolinuxException {
         timetable.executeUpdate(parsedArguments);
+        String moduleCode = parsedArguments[0].toUpperCase();
+        String lessonType = parsedArguments[1].toUpperCase();
         logger.log(Level.INFO, "User has updated the timetable.");
-        return new CommandResult(parsedArguments[0].toUpperCase() + " "
-                +
-                parsedArguments[1].toUpperCase() + " has been updated");
+        return new CommandResult(moduleCode + " " + lessonType + " has been updated");
     }
 
     /**
@@ -121,10 +116,10 @@ public class TimetableCommand extends Command {
      */
     private CommandResult listLesson() throws KolinuxException {
         try {
-            timetable.listTimetable(parsedArguments[0]);
+            String day = parsedArguments[0].toLowerCase();
+            timetable.listTimetable(day);
             logger.log(Level.INFO, "User has listed the timetable.");
-            return new CommandResult("\nYour lessons for " + parsedArguments[0].toLowerCase()
-                    + " has been listed above");
+            return new CommandResult("\nYour lessons for " + day + " has been listed above");
         } catch (IndexOutOfBoundsException exception) {
             throw new KolinuxException("Please ensure the format of timetable list:\ntimetable list DAY");
         }
