@@ -28,6 +28,8 @@ The following explains the use of different icons in this user guide:
 * 💥 [`v2.0`](https://github.com/AY2122S1-CS2113T-W11-1/tp/releases/tag/v2.0) Released on Oct 26, 2021.
 * 💥 [`v1.0`](https://github.com/AY2122S1-CS2113T-W11-1/tp/releases/tag/v1.0) Released on Oct 12, 2021.
 
+<div style="page-break-after: always;"></div>
+
 ## Table of Contents
 
 * 1 [Quick Start](#1-quick-start)
@@ -88,6 +90,8 @@ java -jar Kolinux.jar
 Welcome to Kolinux! Enter "help" to view the list of commands
 ....................................................................
 ```
+
+<div style="page-break-after: always;"></div>
 
 ## 2. List of Commands 
 
