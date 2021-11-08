@@ -98,39 +98,83 @@ public class ModuleDetails {
         this.attributes = null;
     }
 
+    /**
+     * Sets the grade input by user.
+     *
+     * @param newGrade Grade inputted by user for a module
+     */
     public void setGrade(String newGrade) {
         grade = newGrade;
     }
 
-
+    /**
+     * Gets the grade set by user for the module.
+     *
+     * @return The grade set by user for the module
+     */
     public String getGrade() {
         return grade;
     }
 
+    /**
+     * Gets the Module credits of a module.
+     *
+     * @return Module credits for a module
+     */
     public String getModuleCredit() {
         return moduleCredit;
     }
 
+    /**
+     * Gets the Module code of a module.
+     *
+     * @return Module code for a module
+     */
     public String getModuleCode() {
         return moduleCode;
     }
 
+    /**
+     * Gets the description of a module.
+     *
+     * @return Description of a module
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Gets the title of a module.
+     *
+     * @return Title of a module
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Gets the department which conducts the module.
+     *
+     * @return Department which conducts the module
+     */
     public String getDepartment() {
         return department;
     }
 
+    /**
+     * Gets the faculty which conducts the module.
+     *
+     * @return Faculty which conducts the module
+     */
     public String getFaculty() {
         return faculty;
     }
 
+    /**
+     * Gets the prescribed tutorial workload hours from the json file.
+     *
+     * @return Tutorial workload hours
+     */
     public double getTutorialHours() {
         try {
             tutorialHours = workload[1];
@@ -140,6 +184,11 @@ public class ModuleDetails {
         }
     }
 
+    /**
+     * Gets the prescribed lecture workload hours from the json file.
+     *
+     * @return Lecture workload hours
+     */
     public double getLectureHours() {
         try {
             lectureHours = workload[0];
@@ -149,6 +198,11 @@ public class ModuleDetails {
         }
     }
 
+    /**
+     * Gets the prescribed lab workload hours from the json file.
+     *
+     * @return Lab workload hours
+     */
     public double getLabHours() {
         try {
             labHours = workload[2];
@@ -158,6 +212,11 @@ public class ModuleDetails {
         }
     }
 
+    /**
+     * Gets the prescribed project workload hours from the json file.
+     *
+     * @return Project workload hours
+     */
     public double getProjectHours() {
         try {
             projectHours = workload[3];
@@ -167,6 +226,11 @@ public class ModuleDetails {
         }
     }
 
+    /**
+     * Gets the prescribed preparation workload hours from the json file.
+     *
+     * @return Preparation workload hours
+     */
     public double getPreparationHours() {
         try {
             preparationHours = workload[4];
@@ -176,6 +240,11 @@ public class ModuleDetails {
         }
     }
 
+    /**
+     * Gets the time and date of exam for a module from the json file.
+     *
+     * @return The time and date of exam for a module
+     */
     public String[] getExamDateTime() {
         try {
             String examDate = semesterData.get(SEMESTER_1).getAsJsonObject().get("examDate").getAsString();
@@ -187,7 +256,13 @@ public class ModuleDetails {
         }
     }
 
-    public String getDate() {
+    /**
+     * Gets the date of exam for a module from the json file by parsing the date and time
+     * which is extracted from the json file.
+     *
+     * @return The time and date of exam for a module
+     */
+    public String getExamDate() {
         try {
             String[] dateTime = getExamDateTime();
             return dateTime[0];
@@ -196,7 +271,12 @@ public class ModuleDetails {
         }
     }
 
-    public String getStartTime() {
+    /**
+     * Gets the start time of exam for a module from the json file and converts it from UTC time zone to HHmm.
+     *
+     * @return The time and date of exam for a module
+     */
+    public String getExamStartTime() {
         try {
             String[] dateTime = getExamDateTime();
             String time = dateTime[1];
@@ -214,11 +294,16 @@ public class ModuleDetails {
         }
     }
 
-    public String getEndTime() {
+    /**
+     * Gets the end time of exam for a module by adding the exam hours to the exam start time.
+     *
+     * @return The time and date of exam for a module
+     */
+    public String getExamEndTime() {
         try {
             int examHours = 0;
             examHours = (semesterData.get(SEMESTER_1).getAsJsonObject().get("examDuration").getAsInt()) / 60;
-            String time = getStartTime();
+            String time = getExamStartTime();
             String[] timings = time.split(":");
             int endTiming = Integer.parseInt(timings[0]) + examHours;
             String endTime;
@@ -371,4 +456,5 @@ public class ModuleDetails {
                 && semesterData.equals(castOther.semesterData)
                 && attributes.equals(castOther.attributes);
     }
+
 }
