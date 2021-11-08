@@ -102,7 +102,7 @@ public class Event {
     }
 
     /**
-     * Gets the start time of the event in string
+     * Gets the start time of the event in string.
      *
      * @return Start time of the event in string, in HHmm format.
      */
@@ -111,7 +111,7 @@ public class Event {
     }
 
     /**
-     * Gets the start time of the event in string
+     * Gets the start time of the event in string.
      *
      * @return End time of the event in string, in HHmm format.
      */
