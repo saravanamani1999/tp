@@ -483,8 +483,8 @@ manager so that you will also be able to view your lessons and exams on specific
 
 **Format:** `planner add DESCRIPTION/DATE/START_TIME/END_TIME`
 
-* The `DATE` needs to follow the following format: `yyyy-mm-dd`
-* `START_TIME` and `END_TIME` needs to follow the following format: `hhMM`
+* The `DATE` needs to follow the following format: `yyyy-MM-dd`
+* `START_TIME` and `END_TIME` needs to follow the following format: `HHmm`
 
 **Example of usage:**
 
@@ -502,7 +502,7 @@ give additional confirmation if you wish to proceed.
 
 **Format:** `planner list DATE`
 
-* The `DATE` needs to follow the following format: `yyyy-mm-dd`
+* The `DATE` needs to follow the following format: `yyyy-MM-dd`
 * Adding extraneous parameters separated by `/` will be ignored. For example: `planner list 2021-10-10/something` will be treated the same as `planner list 2021-10-10`.
 
 **Example of usage:**
@@ -534,7 +534,7 @@ This command has two steps:
 2. Find the ID of the event you wish to delete from the schedule of events on `DATE` displayed.
 3. Input the ID to delete the event.
 
-* The `DATE` needs to follow the following format: `yyyy-mm-dd`
+* The `DATE` needs to follow the following format: `yyyy-MM-dd`
 * Adding extraneous parameters separated by `/` will be ignored. For example: `planner delete 2021-10-10/something` will be treated the same as `planner delete 2021-10-10`.
 
 **Example of usage:**
