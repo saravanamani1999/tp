@@ -65,6 +65,8 @@ The following explains the use of different icons in this user guide:
 * 6 [Data Storage](#6-data-storage)
 * 7 [Contact Us](#7-contact-us)
 
+<div style="page-break-after: always;"></div>
+
 ## 1. Quick Start
 
 ### Installation and start-up
@@ -91,7 +93,7 @@ Welcome to Kolinux! Enter "help" to view the list of commands
 ....................................................................
 ```
 
-<div style="page-break-after: always;"></div>
+
 
 ## 2. List of Commands 
 
