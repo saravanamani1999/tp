@@ -6,6 +6,7 @@ import seedu.kolinux.timetable.subcommand.SubCommand;
 /** Lesson class which stores all the attributes of a lesson to be input into the timetable. */
 public abstract class Lesson {
 
+
     protected String lessonType;
     protected String moduleCode;
     protected String day;
@@ -18,6 +19,7 @@ public abstract class Lesson {
             "0930","1000", "1030","1100", "1130", "1200", "1230", "1300", "1330", "1400", "1430", "1500",
             "1530","1600", "1630","1700", "1730", "1800", "1830","1900", "1930","2000","2030","2100"};
     public static String[] days = new String[] {"monday", "tuesday", "wednesday", "thursday", "friday"};
+    private static final int INVALID_INDEX = -1;
 
     public Lesson(String[] parsedArguments) throws KolinuxException {
         try {
@@ -125,10 +127,11 @@ public abstract class Lesson {
     public static int getIndex(String input, String[] array) {
         for (int i = 0; i < array.length; i++) {
             if (array[i].equals(input)) {
+                // Adds 1 as the first row and column in the timetable is occupied by the timings and days
                 return i + 1;
             }
         }
-        return -1;
+        return INVALID_INDEX;
     }
 
     /**
@@ -136,7 +139,8 @@ public abstract class Lesson {
      *
      * @return The duration of a lesson
      */
-    public int getHours() {
+    public int getLessonDuration() {
         return endTimeIndex - startTimeIndex;
     }
+
 }

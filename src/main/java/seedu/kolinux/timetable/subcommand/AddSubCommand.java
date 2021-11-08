@@ -24,6 +24,8 @@ import static seedu.kolinux.timetable.lesson.Lesson.days;
 /** Represents the operations and checks when adding to the timetable. */
 public class AddSubCommand extends SubCommand {
 
+    private static final int NUMBER_SLOTS_FOR_1_HOUR = 2;
+
     public AddSubCommand() {
 
     }
@@ -118,7 +120,7 @@ public class AddSubCommand extends SubCommand {
         for (Lesson storedLesson : lessonStorage) {
             if (storedLesson.getModuleCode().equals(moduleCode)
                     && storedLesson.getLessonType().equals(lessonType)) {
-                hourCount += storedLesson.getHours();
+                hourCount += storedLesson.getLessonDuration();
             }
         }
         return hourCount;
@@ -130,19 +132,26 @@ public class AddSubCommand extends SubCommand {
      * @param moduleList The list of modules added by user using {@code module add} before adding to timetable
      * @param moduleCode Module code of the lesson to retrieve the workload hours from
      * @param lessonType Lesson type of the lesson to retrieve the workload hours from
-     * @return The workload hours for the lesson being addein
+     * @return The workload hours for the lesson being added
      */
     private double getRequiredHours(ModuleList moduleList, String moduleCode, String lessonType) {
         for (ModuleDetails module : moduleList.myModules) {
             if ((lessonType.equals("TUT") || lessonType.equals("REC")) && module.moduleCode.equals(moduleCode)) {
-                return module.getTutorialHours() * 2;
+                //As the slots in timetable are in multiples of 30 mins,
+                // workload hours have been multiplied by 2 for easy comparison
+                return module.getTutorialHours() * NUMBER_SLOTS_FOR_1_HOUR;
             } else if ((lessonType.equals("LEC") || lessonType.equals("SEC"))
                     && module.moduleCode.equals(moduleCode)) {
-                return module.getLectureHours() * 2;
+                //As the slots in timetable are in multiples of 30 mins,
+                // workload hours have been multiplied by 2 for easy comparison
+                return module.getLectureHours() * NUMBER_SLOTS_FOR_1_HOUR;
             } else if ((lessonType.equals("LAB") || lessonType.equals("REC"))
                     && module.moduleCode.equals(moduleCode)) {
-                return module.getLabHours() * 2;
+                //As the slots in timetable are in multiples of 30 mins,
+                // workload hours have been multiplied by 2 for easy comparison
+                return module.getLabHours() * NUMBER_SLOTS_FOR_1_HOUR;
             }
+
         }
         return 0;
     }
@@ -187,7 +196,7 @@ public class AddSubCommand extends SubCommand {
         if (storageHours > requiredHours && !isAllowingAdd && !isStorageAdd) {
             throw new ExceedWorkloadException("Input hours for " + moduleCode + " " + lessonType
                     +
-                    " exceeds the total workload\nIt exceeds " + requiredHours / 2 + " hours\n"
+                    " exceeds the total workload\nIt exceeds " + requiredHours / NUMBER_SLOTS_FOR_1_HOUR + " hours\n"
                     +
                     "Do you want to continue adding the lesson despite\n"
                     +
@@ -230,7 +239,8 @@ public class AddSubCommand extends SubCommand {
         int dayIndex = getIndex(day, days);
         int startTimeIndex = getIndex(startTime, schoolHours);
         int endTimeIndex = getIndex(endTime, schoolHours);
-        if (startTimeIndex == -1 || dayIndex == -1 || endTimeIndex == -1 || startTimeIndex >= endTimeIndex) {
+        if (startTimeIndex == INVALID_INDEX || dayIndex == INVALID_INDEX || endTimeIndex == INVALID_INDEX
+                || startTimeIndex >= endTimeIndex) {
             throw new KolinuxException(INVALID_ADD_FORMAT + "\n\n" + INVALID_DAY_TIME_FOR_ADD);
         }
     }

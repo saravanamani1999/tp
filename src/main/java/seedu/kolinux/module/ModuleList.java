@@ -120,9 +120,9 @@ public class ModuleList {
      * @param module Module details containing all module information
      */
     public void getExamDateTime(ModuleDetails module) {
-        String examDate = module.getDate();
-        String examStartTime = module.getStartTime();
-        String examEndTime = module.getEndTime();
+        String examDate = module.getExamDate();
+        String examStartTime = module.getExamStartTime();
+        String examEndTime = module.getExamEndTime();
         if (examDate != null && examStartTime != null && examEndTime != null) {
             System.out.println("Exam date: " + examDate);
             System.out.println("Exam time: " + examStartTime + " - " + examEndTime);

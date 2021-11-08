@@ -12,8 +12,6 @@ public abstract class CapCalculator {
     
     private static final int CLASSNAME_POSITION = 3;
     
-    protected static final int INVALID_STORED_GRADE = -1;
-    
     protected static final double MAX_CAP = 5.0;
 
     protected static final String DIVIDER = "/";
@@ -39,7 +37,7 @@ public abstract class CapCalculator {
      * @throws KolinuxException If the modules attribute is empty in order to show an error message to the user.
      */
     protected void checkModulesNotEmpty() throws KolinuxException {
-        if (modules.getMyModulesSize() > 0 || !invalidModules.isEmpty()) {
+        if (modules.getMyModulesSize() > 0 || !invalidModules.isEmpty() || !invalidGradeModules.isEmpty()) {
             return;
         }
         String errorMessage;
