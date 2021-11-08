@@ -13,6 +13,7 @@ public class SubCommand {
     public static final int ROW_SIZE = 31;
     public static final int COLUMN_SIZE = 6;
     public static final int COLUMN_LAST_INDEX = 5;
+    public static final int INVALID_INDEX = -1;
     public static final String UPDATING_TO_SAME_TIMING = "You are updating the lesson to the same "
             +
             "timing as before.\nPlease update lesson to a different timing.";
@@ -120,7 +121,7 @@ public class SubCommand {
     protected void checkStartTimeAndDay(String day, String startTime, String correctFormat) throws KolinuxException {
         int dayIndex = getIndex(day, days);
         int startTimeIndex = getIndex(startTime, schoolHours);
-        if (startTimeIndex == -1 || dayIndex == -1) {
+        if (startTimeIndex == INVALID_INDEX || dayIndex == INVALID_INDEX) {
             throw new KolinuxException(correctFormat + "\n\n" + INVALID_DAY_START_TIME);
         }
     }

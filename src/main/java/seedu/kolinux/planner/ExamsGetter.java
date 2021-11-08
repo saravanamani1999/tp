@@ -41,9 +41,9 @@ public class ExamsGetter {
                 continue;
             }
             arguments[0] = module.getModuleCode() + " Exam";
-            arguments[1] = module.getDate();
-            arguments[2] = module.getStartTime().replaceFirst(COLON, EMPTY_STRING);
-            arguments[3] = module.getEndTime().replaceFirst(COLON, EMPTY_STRING);
+            arguments[1] = module.getExamDate();
+            arguments[2] = module.getExamStartTime().replaceFirst(COLON, EMPTY_STRING);
+            arguments[3] = module.getExamEndTime().replaceFirst(COLON, EMPTY_STRING);
 
             try {
                 Event event = new Event(arguments);
