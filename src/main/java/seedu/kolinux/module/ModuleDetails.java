@@ -335,7 +335,8 @@ public class ModuleDetails {
      */
     public double getGradePoint() {
         switch (grade) {
-        case A_PLUS_GRADE: // Fallthrough, is equivalent grade point to "A"
+        case A_PLUS_GRADE:
+            // Fallthrough, is equivalent grade point to "A"
         case A_GRADE:
             return 5.0;
         case A_MINUS_GRADE:
