@@ -39,6 +39,10 @@ public class UpdateSubCommand extends SubCommand {
         }
         int startIndex = getIndex(newStartTiming, schoolHours);
         int endIndex = startIndex + getOldLessonHours(moduleCode, lessonType, oldDay, oldStartTiming);
+        // Lesson ends later than 2100
+        if (endIndex > 31) {
+            throw new KolinuxException(INVALID_UPDATE_FORMAT + "\n\n" + INVALID_DAY_START_TIME);
+        }
         String newEndTiming = schoolHours[endIndex - 1];
         checkUpdateTiming(moduleCode, lessonType, oldDay, newDay, oldStartTiming, newStartTiming, newEndTiming);
         String[] parameters = new String[] {moduleCode, lessonType, newDay, newStartTiming, newEndTiming};
