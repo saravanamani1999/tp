@@ -46,9 +46,9 @@ public class Parser {
 
     private static final String ILLEGAL_CHAR_MESSAGE = "Please avoid using '|' in your input, please try again.";
     private static final String FATAL_ERROR = "Fatal error occurred, please restart Kolinux.";
-    private static final String DATE_FORMAT_ERROR = "Please provide a valid date format. Format: yyyy-mm-dd";
+    private static final String DATE_FORMAT_ERROR = "Please provide a valid date format. Format: yyyy-MM-dd";
     private static final String DATE_VALIDITY_ERROR = "This date does not exist. Please try again.";
-    private static final String TIME_FORMAT_ERROR = "Please provide a valid time format. Format: hhMM";
+    private static final String TIME_FORMAT_ERROR = "Please provide a valid time format. Format: HHmm";
     private static final String TIME_VALIDITY_ERROR = "This time is not valid. Please try again.";
     private static final String INTERNAL_ERROR_MESSAGE = "Internal error occurred, please try again.";
 
