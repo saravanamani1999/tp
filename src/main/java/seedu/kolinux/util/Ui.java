@@ -19,6 +19,9 @@ public class Ui {
     private static final String GREET_MESSAGE = "Welcome to Kolinux! Enter \"help\" to view the list of commands";
     private static final String DIVIDER = "....................................................................";
 
+    /**
+     * Prints a divider to separate different executions.
+     */
     private void printDivider() {
         System.out.println(DIVIDER);
     }

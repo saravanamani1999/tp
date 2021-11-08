@@ -51,7 +51,7 @@ public class PlannerCommandTest {
             + "15:00 - 15:15 Pop Quiz 3\n"
             + "20:00 - 21:30 Pop Quiz 5";
 
-    private static final String DATE_FORMAT_ERROR = "Please provide a valid date format. Format: yyyy-mm-dd";
+    private static final String DATE_FORMAT_ERROR = "Please provide a valid date format. Format: yyyy-MM-dd";
     private static final String DATE_VALIDITY_ERROR = "This date does not exist. Please try again.";
 
     @Test

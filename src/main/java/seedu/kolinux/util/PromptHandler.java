@@ -9,10 +9,20 @@ public class PromptHandler {
     protected String message;
     protected static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
+    /**
+     * Constructs a PromptHandler that is meant to be addressed by the user.
+     *
+     * @param message Prompt message for the user to reply to
+     */
     public PromptHandler(String message) {
         this.message = message;
     }
 
+    /**
+     * Returns the string representation of a PromptHandler, which is the prompt meant to be addressed by the user.
+     *
+     * @return Prompt message for the user to reply to
+     */
     public String toString() {
         return message;
     }

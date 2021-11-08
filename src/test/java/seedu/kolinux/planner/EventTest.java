@@ -11,9 +11,9 @@ public class EventTest {
     private static final String CORRUPTED_DATA_STRING = "some corrupted data||0x|[]*";
     private static final String EVENT_FROM_DATA = "12:00 - 15:00 Some data";
 
-    private static final String DATE_FORMAT_ERROR = "Please provide a valid date format. Format: yyyy-mm-dd";
+    private static final String DATE_FORMAT_ERROR = "Please provide a valid date format. Format: yyyy-MM-dd";
     private static final String DATE_VALIDITY_ERROR = "This date does not exist. Please try again.";
-    private static final String TIME_FORMAT_ERROR = "Please provide a valid time format. Format: hhMM";
+    private static final String TIME_FORMAT_ERROR = "Please provide a valid time format. Format: HHmm";
     private static final String TIME_VALIDITY_ERROR = "This time is not valid. Please try again.";
 
     private static final String[][] INVALID_EVENT_ARGUMENTS

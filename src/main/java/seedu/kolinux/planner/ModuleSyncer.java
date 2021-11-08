@@ -34,6 +34,12 @@ public class ModuleSyncer {
         getExamsOnDate(moduleList);
     }
 
+    /**
+     * Gets the list of lessons stored in the timetable and exams of modules stored in the module list as events on a
+     * particular date determined by the date attribute of this class.
+     *
+     * @return List of lessons and exams as events on a particular date
+     */
     public ArrayList<Event> getLessonsAndExamsAsEventsOnDate() {
         return lessonsAndExamsAsEventsOnDate;
     }

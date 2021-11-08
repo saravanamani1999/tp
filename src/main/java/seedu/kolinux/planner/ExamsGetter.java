@@ -56,6 +56,11 @@ public class ExamsGetter {
         }
     }
 
+    /**
+     * Gets the list of all exams of the modules stored in the module list as an Event list.
+     *
+     * @return List of exams as events.
+     */
     public ArrayList<Event> getExams() {
         return exams;
     }

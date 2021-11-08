@@ -16,8 +16,6 @@ public class Event {
     private static final String PIPE = "|";
     private static final int EVENT_ARGUMENTS_LENGTH = 4;
 
-    private static int currentEventId = 0;
-
     private String description;
     private LocalDate date;
     private LocalTime startTime;
@@ -25,6 +23,7 @@ public class Event {
     private int id;
     // true if and only if the event is created from a lesson or exam.
     private boolean isIntegratedEvent = false;
+    private static int currentEventId = 0;
 
     private static final String EMPTY_DESCRIPTION_ERROR =
             "Please provide a description for your event!";
@@ -83,22 +82,49 @@ public class Event {
         this.isIntegratedEvent = true;
     }
 
+    /**
+     * Returns isIntegratedEvent, which will indicate if the event is created from an exam or lesson, or within
+     * planner.
+     *
+     * @return true if the event is created from an exam or lesson, false otherwise.
+     */
     public boolean getIsIntegratedEvent() {
         return this.isIntegratedEvent;
     }
 
+    /**
+     * Gets the date of the event in string.
+     *
+     * @return Date of the event in string, in yyyy-MM-dd format.
+     */
     public String getDate() {
         return date.toString();
     }
 
+    /**
+     * Gets the start time of the event in string.
+     *
+     * @return Start time of the event in string, in HHmm format.
+     */
     public String getStartTime() {
         return startTime.toString().replace(COLON, EMPTY_STRING);
     }
 
+    /**
+     * Gets the start time of the event in string.
+     *
+     * @return End time of the event in string, in HHmm format.
+     */
     public String getEndTime() {
         return endTime.toString().replace(COLON, EMPTY_STRING);
     }
 
+    /**
+     * Gets the unique ID of the event in string. Note that the ID of an event might change between program sessions,
+     * hence not a constant. However, the ID is always unique among events.
+     *
+     * @return Unique ID of the event.
+     */
     public String getId() {
         return Integer.toString(id);
     }
@@ -113,13 +139,18 @@ public class Event {
         return description + PIPE + date.toString() + PIPE + getStartTime() + PIPE + getEndTime();
     }
 
+    /**
+     * Returns the string representation of an event for display on the terminal for the user.
+     *
+     * @return String representation of an event
+     */
     public String toString() {
         assert startTime.compareTo(endTime) < 0;
         return startTime + " - " + endTime + " " + description;
     }
 
     /**
-     * Prints the string representation of this object with ID.
+     * Prints the string representation of this object with ID, to be used when the user wants to delete an event.
      *
      * @return String representation with ID
      */
