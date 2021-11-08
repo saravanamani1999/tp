@@ -36,16 +36,21 @@ public class Parser {
     private static final String COMMAND_TIMETABLE = "timetable";
 
     private static final String EMPTY_STRING = "";
-    private static final String ILLEGAL_CHAR = "|"; // Use of pipe may corrupt the storage files
+    // Use of pipe may corrupt the storage files
+    private static final String ILLEGAL_CHAR = "|";
+    private static final String SLASH_DELIMITER = "/";
+    private static final String WHITE_SPACE = " ";
+
+    private static final String DATE_PATTERN = "\\d\\d\\d\\d-\\d\\d-\\d\\d";
+    private static final String TIME_PATTERN = "\\d\\d\\d\\d";
 
     private static final String ILLEGAL_CHAR_MESSAGE = "Please avoid using '|' in your input, please try again.";
     private static final String FATAL_ERROR = "Fatal error occurred, please restart Kolinux.";
-    private static final String DATE_PATTERN = "\\d\\d\\d\\d-\\d\\d-\\d\\d";
     private static final String DATE_FORMAT_ERROR = "Please provide a valid date format. Format: yyyy-mm-dd";
     private static final String DATE_VALIDITY_ERROR = "This date does not exist. Please try again.";
-    private static final String TIME_PATTERN = "\\d\\d\\d\\d";
     private static final String TIME_FORMAT_ERROR = "Please provide a valid time format. Format: hhMM";
     private static final String TIME_VALIDITY_ERROR = "This time is not valid. Please try again.";
+    private static final String INTERNAL_ERROR_MESSAGE = "Internal error occurred, please try again.";
 
     /**
      * Removes leading and trailing white spaces from all the elements in a String array.
@@ -74,8 +79,8 @@ public class Parser {
         }
         try {
             String trimmedInput = input.trim();
-            String commandWord = trimmedInput.split(" ", 2)[0];
-            String argument = trimmedInput.replaceFirst(commandWord, "").trim();
+            String commandWord = trimmedInput.split(WHITE_SPACE, 2)[0];
+            String argument = trimmedInput.replaceFirst(commandWord, EMPTY_STRING).trim();
 
             switch (commandWord.toLowerCase()) {
             case COMMAND_HELP:
@@ -110,9 +115,9 @@ public class Parser {
      * @return Command class according to commandWord
      */
     public static Command parseSubCommand(String subInput, String commandWord) throws KolinuxException {
-        String subCommand = subInput.split(" ", 2)[0];
-        String argument = subInput.replaceFirst(subCommand, "").trim();
-        String[] parsedArguments = trimAllElementsOfArray(argument.split("/"));
+        String subCommand = subInput.split(WHITE_SPACE, 2)[0];
+        String argument = subInput.replaceFirst(subCommand, EMPTY_STRING).trim();
+        String[] parsedArguments = trimAllElementsOfArray(argument.split(SLASH_DELIMITER));
         switch (commandWord) {
         case COMMAND_PLANNER:
             return new PlannerCommand(subCommand, parsedArguments);
@@ -121,7 +126,7 @@ public class Parser {
         case COMMAND_MODULE:
             return new ModuleCommand(subCommand, parsedArguments);
         default:
-            throw new KolinuxException("Internal error occurred, please try again.");
+            throw new KolinuxException(INTERNAL_ERROR_MESSAGE);
         }
     }
 
@@ -135,9 +140,9 @@ public class Parser {
      * @throws KolinuxException If the user's input contains invalid module descriptions.
      */
     public static Command parseCapCommand(String subInput) throws KolinuxException {
-        String subCommand = subInput.split(" ", 2)[0];
-        String argument = subInput.replaceFirst(subCommand, "").trim();
-        String[] parsedArguments = argument.split(" ");
+        String subCommand = subInput.split(WHITE_SPACE, 2)[0];
+        String argument = subInput.replaceFirst(subCommand, EMPTY_STRING).trim();
+        String[] parsedArguments = argument.split(WHITE_SPACE);
         return new CalculateCapCommand(subCommand, parsedArguments);
     }
 

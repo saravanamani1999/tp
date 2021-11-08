@@ -11,6 +11,7 @@ import java.util.logging.SimpleFormatter;
 /** Represents the logger for this application to log user activity. */
 public class KolinuxLogger {
 
+    private static final String LOGGER_FILE_PATH = "./data/logger.log";
     private static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     /**
@@ -29,7 +30,7 @@ public class KolinuxLogger {
         logger.addHandler(consoleHandler);
 
         try {
-            FileHandler fileHandler = new FileHandler("./data/logger.log");
+            FileHandler fileHandler = new FileHandler(LOGGER_FILE_PATH);
             fileHandler.setFormatter(new SimpleFormatter());
             fileHandler.setLevel(Level.ALL);
             logger.addHandler(fileHandler);

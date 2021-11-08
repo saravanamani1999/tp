@@ -16,10 +16,18 @@ public abstract class Command {
     protected static ModuleDb moduleDb = new ModuleDb().getPreInitModuleDb();
     protected static ModuleList moduleList = new ModuleList();
 
+    /**
+     * Constructor for commands which do not require any parameters.
+     */
     public Command() {
 
     }
 
+    /**
+     * Constructor for commands which require additional information to be sent in as parameters.
+     *
+     * @param argument Parameter for the command
+     */
     public Command(String argument) {
         this.argument = argument;
     }
