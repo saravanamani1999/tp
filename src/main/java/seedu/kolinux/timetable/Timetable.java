@@ -166,6 +166,7 @@ public class Timetable {
         for (Lesson lesson: lessonStorage) {
             if (lesson.getDay().equals(day)) {
                 doesLessonExist = true;
+                // Stores the lesson details into lessonList in the format START_TIME - END_TIME LESSON_DESCRIPTION
                 lessonList[lesson.getStartTimeIndex() - 1] = lesson.getStartTime() + " - " + lesson.getEndTime()
                         + " " + lesson.getModuleCode() + " " + lesson.getLessonType();
             }
