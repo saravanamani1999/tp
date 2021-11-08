@@ -63,7 +63,7 @@ public class PlannerTest {
             = "\n09:00 - 11:00 CS2113T Exam";
     private static final String FORMAT_ERROR =
             "Please check the format of your input! Format: planner add DESCRIPTION/DATE/START_TIME/END_TIME";
-    private static final String DATE_FORMAT_ERROR = "Please provide a valid date format. Format: yyyy-mm-dd";
+    private static final String DATE_FORMAT_ERROR = "Please provide a valid date format. Format: yyyy-MM-dd";
     private static final String TIME_ORDER_ERROR =
             "Please check the format of the time! The end time is earlier than the start time...";
     private static final String TIME_SAME_ERROR =

@@ -1,5 +1,8 @@
 package seedu.kolinux.module;
 
+/**
+ * Grade class that stores all possible grades as constants.
+ */
 public class Grade {
     public static final String A_PLUS_GRADE = "A+";
     public static final String A_MINUS_GRADE = "A-";
@@ -22,7 +25,7 @@ public class Grade {
 
     public static final String S_GRADE = "S";
     public static final String U_GRADE = "U";
-    
+
     public static final String EXE_GRADE = "EXE";
     public static final String IC_GRADE = "IC";
     public static final String IP_GRADE = "IP";

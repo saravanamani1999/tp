@@ -16,6 +16,8 @@ public class PlannerCommand extends Command {
     private String subCommand;
     private String[] parsedArguments;
 
+    private static final String WHITE_SPACE = " ";
+
     // subcommands of planner
     private static final String ADD_SUBCOMMAND = "add";
     private static final String LIST_SUBCOMMAND = "list";
@@ -43,6 +45,13 @@ public class PlannerCommand extends Command {
                     + "planner list DATE\n"
                     + "planner delete DATE";
 
+    /**
+     * Constructor for PlannerCommand, which is invoked when the first word of the user input is "planner".
+     *
+     * @param subCommand Sub-command of the planner, either add, list, or delete.
+     * @param parsedArguments Parameters that follows the sub-command, which is separated into an array using the "/"
+     *                        delimiter.
+     */
     public PlannerCommand(String subCommand, String[] parsedArguments) {
         this.subCommand = subCommand;
         this.parsedArguments = parsedArguments;
@@ -68,7 +77,7 @@ public class PlannerCommand extends Command {
             assert exception.getMessage().equals(TIME_CONFLICT_PROMPT);
             new PlannerPromptHandler(planner, TIME_CONFLICT_PROMPT).handleEventConflict(event);
         }
-        return new CommandResult(ADD_EVENT_MESSAGE + event.getDate() + " " + event);
+        return new CommandResult(ADD_EVENT_MESSAGE + event.getDate() + WHITE_SPACE + event);
     }
 
     /**
@@ -82,7 +91,7 @@ public class PlannerCommand extends Command {
         String dayOfWeek = Parser.getDayOfWeek(parsedArguments[0]);
         String eventList = planner.listEvents(parsedArguments[0], false);
         logger.log(Level.INFO, "User listed events on " + parsedArguments[0]);
-        return new CommandResult(parsedArguments[0] + " " + dayOfWeek + eventList);
+        return new CommandResult(parsedArguments[0] + WHITE_SPACE + dayOfWeek + eventList);
     }
 
     /**
@@ -99,7 +108,8 @@ public class PlannerCommand extends Command {
         String id = new PlannerPromptHandler(planner, ENTER_ID_PROMPT + idList).promptForEventId();
         Event deletedEvent = planner.deleteEvent(id);
         logger.log(Level.INFO, "User deleted an event: " + deletedEvent);
-        return new CommandResult(DELETE_EVENT_MESSAGE + deletedEvent.getDate() + " " + deletedEvent);
+        return new CommandResult(DELETE_EVENT_MESSAGE + deletedEvent.getDate() + WHITE_SPACE
+                + deletedEvent);
     }
 
     /**

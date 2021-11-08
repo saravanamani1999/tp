@@ -28,6 +28,8 @@ The following explains the use of different icons in this user guide:
 * 💥 [`v2.0`](https://github.com/AY2122S1-CS2113T-W11-1/tp/releases/tag/v2.0) Released on Oct 26, 2021.
 * 💥 [`v1.0`](https://github.com/AY2122S1-CS2113T-W11-1/tp/releases/tag/v1.0) Released on Oct 12, 2021.
 
+<div style="page-break-after: always;"></div>
+
 ## Table of Contents
 
 * 1 [Quick Start](#1-quick-start)
@@ -63,6 +65,8 @@ The following explains the use of different icons in this user guide:
 * 6 [Data Storage](#6-data-storage)
 * 7 [Contact Us](#7-contact-us)
 
+<div style="page-break-after: always;"></div>
+
 ## 1. Quick Start
 
 ### Installation and start-up
@@ -88,6 +92,8 @@ java -jar Kolinux.jar
 Welcome to Kolinux! Enter "help" to view the list of commands
 ....................................................................
 ```
+
+
 
 ## 2. List of Commands 
 
@@ -483,8 +489,8 @@ manager so that you will also be able to view your lessons and exams on specific
 
 **Format:** `planner add DESCRIPTION/DATE/START_TIME/END_TIME`
 
-* The `DATE` needs to follow the following format: `yyyy-mm-dd`
-* `START_TIME` and `END_TIME` needs to follow the following format: `hhMM`
+* The `DATE` needs to follow the following format: `yyyy-MM-dd`
+* `START_TIME` and `END_TIME` needs to follow the following format: `HHmm`
 
 **Example of usage:**
 
@@ -502,7 +508,7 @@ give additional confirmation if you wish to proceed.
 
 **Format:** `planner list DATE`
 
-* The `DATE` needs to follow the following format: `yyyy-mm-dd`
+* The `DATE` needs to follow the following format: `yyyy-MM-dd`
 * Adding extraneous parameters separated by `/` will be ignored. For example: `planner list 2021-10-10/something` will be treated the same as `planner list 2021-10-10`.
 
 **Example of usage:**
@@ -534,7 +540,7 @@ This command has two steps:
 2. Find the ID of the event you wish to delete from the schedule of events on `DATE` displayed.
 3. Input the ID to delete the event.
 
-* The `DATE` needs to follow the following format: `yyyy-mm-dd`
+* The `DATE` needs to follow the following format: `yyyy-MM-dd`
 * Adding extraneous parameters separated by `/` will be ignored. For example: `planner delete 2021-10-10/something` will be treated the same as `planner delete 2021-10-10`.
 
 **Example of usage:**

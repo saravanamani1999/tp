@@ -29,10 +29,20 @@ public class Planner {
 
     private static final String DATE_PATTERN = "\\d\\d\\d\\d-\\d\\d-\\d\\d";
 
+    /**
+     * Constructs a planner without parameters, which is used for initialization and testing purposes. As no module
+     * list is supplied as a parameter, this planner object is only useful for clearing events.
+     */
     public Planner() {
 
     }
 
+    /**
+     * Constructs a planner with the module list. This should be the constructor used if the operations add, list,
+     * or delete needs to be executed, since they require syncing with the module list to fetch the exam data.
+     *
+     * @param moduleList Module list of the user
+     */
     public Planner(ModuleList moduleList) {
         this.moduleList = moduleList;
     }
@@ -110,6 +120,7 @@ public class Planner {
             return;
         }
 
+        // To remove corrupted lines from the file while keeping the valid ones.
         Event event;
         int i = 0;
         while (i < fileLines.size()) {

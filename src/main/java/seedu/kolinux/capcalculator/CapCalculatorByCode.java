@@ -40,7 +40,14 @@ public class CapCalculatorByCode extends CapCalculator {
     protected ModuleDb moduleDb;
     
     private CalculatorModuleList repeatedModules;
-    
+
+    /**
+     * Check if a module contains a valid grade according to its module code.
+     * 
+     * @param moduleCode The code of the module.
+     * @param moduleGrade The grade of the module.
+     * @return The result indicating the validity of the grade.
+     */
     private int containsValidGrade(String moduleCode, String moduleGrade) {
         ModuleDetails module = moduleDb.getModuleInfo(moduleCode);
         if (module.isCsCuModule()) {

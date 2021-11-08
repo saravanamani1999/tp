@@ -17,6 +17,13 @@ public class PlannerPromptHandler extends PromptHandler {
     private static final String INVALID_REPLY_ERROR = "Invalid key entered! Please enter 'y' or 'n'.";
     private static final String CANCEL_DELETE_ERROR = "Operation cancelled, no events were deleted.";
 
+    /**
+     * Constructor for this class, which is used when the user needs to delete an event, or faces a time conflict
+     * when trying to add events.
+     *
+     * @param planner Planner
+     * @param message Prompt message for the user to reply to
+     */
     public PlannerPromptHandler(Planner planner, String message) {
         super(message);
         this.planner = planner;

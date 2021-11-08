@@ -335,7 +335,8 @@ public class ModuleDetails {
      */
     public double getGradePoint() {
         switch (grade) {
-        case A_PLUS_GRADE: // Fallthrough, is equivalent grade point to "A"
+        case A_PLUS_GRADE:
+            // Fallthrough, is equivalent grade point to "A"
         case A_GRADE:
             return 5.0;
         case A_MINUS_GRADE:
@@ -361,15 +362,30 @@ public class ModuleDetails {
         }
     }
 
+    /**
+     * Check if this module contains grade excluded from CAP calculation.
+     * 
+     * @return True if this module contains a non-calculating grade, false otherwise.
+     */
     public boolean containsNonCalculatingGrade() {
         return grade.equals(S_GRADE) || grade.equals(CS_GRADE) || grade.equals(U_GRADE) || grade.equals(CU_GRADE)
                 || grade.equals(EXE_GRADE) || grade.equals(IC_GRADE) || grade.equals(IP_GRADE) || grade.equals(W_GRADE);
     }
 
+    /**
+     * Check if this contains does not have an assigned letter grade.
+     * 
+     * @return True if a letter grade hasn't been assigned for this module, false otherwise.
+     */
     public boolean containsNullGrade() {
         return grade.equals(RESET_GRADE);
     }
 
+    /**
+     * Reset the grade of this module.
+     * 
+     * @return A message indicating that the grade has been reset.
+     */
     public String resetGrade() {
         if (grade.equals(RESET_GRADE)) {
             return moduleCode + " does not have final grade stored";
@@ -378,6 +394,11 @@ public class ModuleDetails {
         return moduleCode + " grade reset";
     }
 
+    /**
+     * Check if this module accepts C/U grade.
+     *
+     * @return True if S/U grade is accepted by this module, false otherwise.
+     */
     public boolean isSuAble() {
         try {
             return attributes.get("su").getAsBoolean();

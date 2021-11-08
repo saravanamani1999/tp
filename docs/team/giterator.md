@@ -27,7 +27,7 @@ These features are powered by the NUSMods API. Written in Java, Kolinux provides
   
   * Highlights: This enhancement changes the way the repository of modules is stored and accessed. Given that all module and timetable related commands interact with module data by specifying module codes, using module codes as keys was an intuitive design decision.
   
-    Since the HashMap data structure in Java provide common methods, our methods to insert/query data to/from the module repository are more concise. Further, when querying module data using any invalid module code (key), the HashMap always returns `null`. Thus, only one corner case needs to be accounted for when querying module data, improving testability.
+    Since the HashMap data structure in Java provides common methods, our methods to insert/query data to/from the module repository are more concise. Further, when querying module data using any invalid module code (key), the HashMap always returns `null`. Thus, only one corner case needs to be accounted for when querying module data, improving testability.
   
 * **Enhancement added**: Converting module related data from Unicode to ASCII using the [JUnidecode library](https://github.com/gcardone/junidecode)
   
@@ -43,8 +43,8 @@ These features are powered by the NUSMods API. Written in Java, Kolinux provides
 * **Contributions to Developer Guide**:
   
   * Added documentation for the design and architecture of the module component.
-  * Added documentation for implementation of add to and delete from module list features.
-  * Added instructions for manual testing of the all module manager related commands.
+  * Added documentation for implementation of `add` to and `delete` from module list features.
+  * Added instructions for manual testing of all module manager related commands.
   * Added UML diagrams: `ModuleClassDiagram.puml`, `ModuleAddSequenceDiagram.puml`
   
 * **Contributions to team-based tasks**:
