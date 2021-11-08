@@ -6,6 +6,8 @@ import seedu.kolinux.module.ModuleDb;
 import seedu.kolinux.module.ModuleDetails;
 import seedu.kolinux.module.ModuleList;
 
+import java.util.ArrayList;
+
 import static seedu.kolinux.module.Grade.A_PLUS_GRADE;
 import static seedu.kolinux.module.Grade.A_MINUS_GRADE;
 import static seedu.kolinux.module.Grade.A_GRADE;
@@ -40,6 +42,7 @@ public class CapCalculatorByCode extends CapCalculator {
     protected ModuleDb moduleDb;
     
     private CalculatorModuleList repeatedModules;
+    protected ArrayList<String> invalidGradeModules;
     
     private int containsValidGrade(String moduleCode, String moduleGrade) {
         ModuleDetails module = moduleDb.getModuleInfo(moduleCode);
@@ -121,6 +124,7 @@ public class CapCalculatorByCode extends CapCalculator {
     public CapCalculatorByCode(String[] parsedArguments) {
         super();
         repeatedModules = new CalculatorModuleList();
+        invalidGradeModules = new ArrayList<>();
         moduleDb = new ModuleDb().getPreInitModuleDb();
         getInputModules(parsedArguments);
     }

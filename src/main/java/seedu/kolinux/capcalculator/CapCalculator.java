@@ -12,8 +12,6 @@ public abstract class CapCalculator {
     
     private static final int CLASSNAME_POSITION = 3;
     
-    protected static final int INVALID_STORED_GRADE = -1;
-    
     protected static final double MAX_CAP = 5.0;
 
     protected static final String DIVIDER = "/";
@@ -21,7 +19,6 @@ public abstract class CapCalculator {
     protected static final String TWO_DECIMAL_FORMAT = "%.2f";
     
     protected CalculatorModuleList modules;
-    protected ArrayList<String> invalidGradeModules;
     protected ArrayList<String> invalidModules;
 
     /**
@@ -29,7 +26,6 @@ public abstract class CapCalculator {
      */
     public CapCalculator() {
         modules = new CalculatorModuleList();
-        invalidGradeModules = new ArrayList<>();
         invalidModules = new ArrayList<>();
     }
 
